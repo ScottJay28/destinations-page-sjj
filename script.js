@@ -13,6 +13,7 @@ user_input_form.addEventListener("submit", (e) => {
   const descr = description.value;
 
   //   clear the form
-  user_input_form.reset;
+
   console.log(destinationName, locationName, photoUrl, descr);
+  user_input_form.reset;
 });
