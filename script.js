@@ -1,6 +1,7 @@
 // when form is submitted grab users input and log it
 
 user_input_form.addEventListener("submit", (e) => {
+  const user_input_form = document.querySelector(".user_input_form");
   // e is the event object
   // holds more information about the event that we are handling
   e.preventDefault();
