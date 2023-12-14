@@ -19,4 +19,5 @@ header.container {
 #cards_container {
   display: flex;
   flex-wrap: wrap;
+  gap: 1reml;
 }
