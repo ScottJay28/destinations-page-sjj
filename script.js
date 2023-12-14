@@ -1,11 +1,8 @@
 // when form is submitted grab users input and log it
-
 user_input_form.addEventListener("submit", (e) => {
-  const user_input_form = document.querySelector(".user_input_form");
   // e is the event object
   // holds more information about the event that we are handling
   e.preventDefault();
-
   const PLACEHOLD_PHOTO_URL =
     "https://cavchronicle.org/wp-content/uploads/2018/03/top-travel-destination-for-visas-900x504.jpg";
   const destinationName = destination_name.value;
@@ -42,9 +39,8 @@ function createCard({ destinationName, locationName, photoUrl, descr }) {
   <h5 class="card-title">${destinationName}</h5>
   <p class="card-text">${locationName}</p>
   ${descr && `<p class="card-text">${descr}.</p>`}
-  <button class="btn btn-info> Edit </button>
-  <button class="btn btn-danger> Delete </button>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
-</div>
+  <button type="button" class="btn btn-info> Edit </button>
+  <button  type="button" class="btn btn-danger> Delete </button>
 </div>`;
+  return card;
 }
