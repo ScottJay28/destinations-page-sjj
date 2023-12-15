@@ -24,6 +24,8 @@ cards_container.addEventListener("click", (e) => {
 
   if (clickedElt.getAttribute("btn_type") === "delete") {
     clickedElt.parentElement.parentElement.remove();
+  } else if (clickedElt.getAttribute("btn_type") === "edit") {
+    handleEdit(clickedElt);
   }
 });
 
@@ -54,4 +56,35 @@ function createCard({ destinationName, locationName, photoUrl, descr }) {
 </div>`;
 
   return card;
+}
+function handleEdit(editBtn) {
+  const cardBody = editBtn.parentElement;
+  const oldDestName = cardBody.children[0].textContent;
+  const oldLocName = cardBody.children[1].textContent;
+  const oldPhotoUrl = cardBody.previousElementSibling.getAttribute("src");
+  const oldDescr =
+    cardBody.children[2].tagName === "P"
+      ? cardBody.children[2].textContent
+      : "";
+
+  const newDestName = prompt("Enter new destination name", oldDestName);
+  const newLocName = prompt("Enter new location name", oldLocName);
+  const newPhotoUrl = prompt("Enter new photo url", oldPhotoUrl);
+  const newDescr = prompt("Enter new description", oldDescr);
+  if (newDestName && newDestName.trim() !== oldDestName) {
+    cardBody.children[0].textContent = newDestName;
+  }
+  if (newLocName && newLocName.trim() !== oldLocName) {
+    cardBody.children[0].textContent = newDestName;
+  }
+  if (newPhotoUrl && newPhotoUrl.trim() !== oldPhotoUrl) {
+    cardBody.previousElementSibling.setAttribute("src", newPhotoUrl);
+  }
+  if (oldDescr && newDescr.trim() !== oldDescr) {
+    cardBody.children[2].textContent = newDescr;
+  } else if (oldDescr === "") {
+    const newDescripElt = document.createElement("p");
+    newDescripElt.textContent = newDescr;
+    cardBody.insertBefore(newDescripElt, clickedElt);
+  }
 }
